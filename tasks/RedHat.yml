@@ -14,4 +14,6 @@
     - libselinux-python 
     - python-setuptools
     - mesos-{{mesos_version}}
-    
+  notify:
+    - Restart mesos-master
+    - Restart mesos-slave    

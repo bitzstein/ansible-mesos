@@ -14,3 +14,6 @@
     - python-setuptools
     - python-dev
     - mesos={{mesos_version}}-1.0.{{ansible_distribution|lower}}{{ansible_distribution_version.split('.')|join('')}}
+  notify:
+    - Restart mesos-master
+    - Restart mesos-slave
