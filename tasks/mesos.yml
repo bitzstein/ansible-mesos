@@ -17,6 +17,12 @@
   file: state=absent path=/etc/mesos-slave/
 
 # == Configure and recreate
+- name: Add 'mesos' group
+  group: name=mesos system=yes state=present
+
+- name: Add 'mesos' user
+  user: name=mesos comment="Mesos" shell=/bin/false home={{ mesos_work_dir }} system=yes state=present
+
 - name: Mesos default config file
   template: src=conf-mesos.j2 dest=/etc/default/mesos
   notify:
