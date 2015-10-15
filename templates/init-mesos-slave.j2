@@ -9,4 +9,8 @@ description "mesos slave"
 start on stopped rc RUNLEVEL=[2345]
 respawn
 
+# Stopping with `sudo service mesos-slave stop` will leave tasks running, to be recovered (due to checkpointing) when the mesos-slave service starts again.
+# Stopping mesos-slave with `sudo pkill -USR1 mesos-slave` will kill all tasks before stopping the mesos-slave service. This is the best way to cleanly restart a system.
+normal exit 0 SIGUSR1
+
 exec /usr/bin/mesos-init-wrapper slave
