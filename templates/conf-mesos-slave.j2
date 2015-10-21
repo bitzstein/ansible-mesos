@@ -5,3 +5,7 @@ export MESOS_CONTAINERIZERS="{{ mesos_containerizers }}"
 export MESOS_EXECUTOR_REGISTRATION_TIMEOUT="{{ mesos_executor_timeout }}"
 export MESOS_PORT="{{ mesos_slave_port }}"
 export MESOS_WORK_DIR="{{ mesos_work_dir }}"
+
+{% if apply_executor_healthcheck_patch %}
+export MESOS_EXECUTOR_ENVIRONMENT_VARIABLES="{{ mesos_work_dir }}/executor.json"
+{% endif %}

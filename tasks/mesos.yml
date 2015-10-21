@@ -41,6 +41,12 @@
   notify:
     - Restart mesos-slave
 
+- name: Mesos Slave executor health check patch
+  template: src=mesos-slave.executor.json.j2 dest="{{ mesos_work_dir }}/executor.json"
+  when: apply_executor_healthcheck_patch
+  notify:
+    - Restart mesos-slave
+
 - name: Check if upstart exists
   stat: path=/etc/init/
   register: etc_init

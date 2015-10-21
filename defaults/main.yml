@@ -22,6 +22,7 @@ mesos_containerizers: "docker,mesos"
 mesos_executor_timeout: "5mins"
 
 # Additional configurations
+apply_executor_healthcheck_patch: true
 mesos_additional_configs: []
   # For example:
   # - name: FOO
